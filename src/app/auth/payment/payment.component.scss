@@ -1,0 +1,87 @@
+.payment{
+  .payment-header{
+    .bi-shop-window{
+      fill: rgba(26,26,26,.5);
+      color:gray;
+      padding: 0.2rem;
+    }
+    span{
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 18px;
+      color: rgba(26, 26, 26, 0.9);
+      font-weight: 500;
+    }
+
+  small{
+    margin-left: 10px;
+    padding: 3px;
+    font-size: 12px;
+    line-height: 18px;
+    color: #bb5504;
+    background-color: #FFDE92;
+    font-weight: 700;
+    border-radius: 10%;
+    -webkit-border-radius: 10%;
+    -moz-border-radius: 10%;
+    -ms-border-radius: 10%;
+    -o-border-radius: 10%;
+  }
+}
+
+  h1{
+    margin-top: 2rem;
+    font-size: 16px ;
+    line-height: 21px;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 0.9);
+  }
+  h2{
+    font-size: 30px ;
+    line-height: 25px;
+    font-weight: 600;
+    color: rgba(26, 26, 26, 0.9);
+  }
+  h6{
+    font-size: 14px ;
+    line-height: 18px;
+    font-weight: 600;
+    color: rgba(26, 26, 26, 0.9);
+  }
+  p{
+    font-size: 11px ;
+    line-height: 18px;
+    font-weight: 400;
+    color: rgba(26, 26, 26, 0.5);
+  }
+  .Quantity{
+    span{
+      font-size: 14px ;
+      line-height: 20px;
+      font-weight: 400;
+      color: rgba(26, 26, 26, 0.9);
+    }
+
+    small{
+      font-size: 12px ;
+      line-height: 20px;
+      font-weight: 400;
+      color: rgba(26, 26, 26, 0.5);
+    }
+  }
+  .total{
+    span{
+    font-size: 14px ;
+    line-height: 18px;
+    font-weight: 500;
+    color: rgba(26, 26, 26, 0.9);
+    }
+
+    small{
+      font-size: 12px ;
+      line-height: 20px;
+      font-weight: 400;
+      color: rgba(26, 26, 26, 0.5);
+    }
+  }
+}

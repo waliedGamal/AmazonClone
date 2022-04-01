@@ -1,0 +1,65 @@
+<div class="mt-5 ">
+  <div class="prod-nav pt-5">
+    <div class="col-md-12 ps-5 py-4">
+      <small routerLink="/home">Home</small> / <span routerLink="/products">Products</span>
+    </div>
+  </div>
+
+  <div class="container-fluid ">
+    <div class="row">
+
+      <div class="col-md-2 product-Categories">
+        <div class="py-4">
+          <ul class="list-unstyled p-4">
+            <h5>Categories</h5>
+            <li value="" (click)="getSearchKey($event)">All</li>
+            <li value="men's clothing" (click)="getSearchKey($event)">Men's clothing</li>
+            <li value="jewelery" (click)="getSearchKey($event)">Jewelry</li>
+            <li value="electronics" (click)="getSearchKey($event)">Electronics</li>
+            <li value="women's clothing" (click)="getSearchKey($event)">Women's clothing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-md-10">
+        <h3 class="py-3"> Products</h3>
+        <div class="row">
+            <div class="col-md-6 col-lg-4 col-xl-3 py-3"
+            *ngFor="let product of Products | category:searchKey:'category'" >
+            <div class="product d-flex flex-column shadow">
+              <span class="product-cate"> {{product.category | uppercase}} </span>
+
+              <div  class="product-img">
+                <img  [src]="product.image"/>
+              </div>
+
+              <div class="Product-content">
+                <h2 class="h6" [routerLink]="['/products',product.id]">{{product.title |shorting}}</h2>
+                <div>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <span>({{ product.rating.rate}})</span>
+                </div>
+
+                  <div>
+                    <p>{{product.description | shorting}}</p>
+                    <h5> {{product.price | currency}} </h5>
+                  </div>
+
+                  <div class="prime">
+                    <img class="w-25" src="../../assets/imgs/Prime-tag-.png" alt="">
+                    <span>FREE Next-day Delivery</span>
+                  </div>
+                  <div> <button (click)="AddToCart(product)"  class="btn col-md-12"> Add To Cart </button> </div>
+                </div>
+
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+

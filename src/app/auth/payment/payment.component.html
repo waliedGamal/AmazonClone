@@ -1,0 +1,71 @@
+<div class="container py-5" >
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-5 payment ">
+      <div class="payment-header d-flex align-items-center">
+        <span (mouseenter)="hide()" [ngClass]="isHovered ? 'hide' : 'show' " routerLink="/cart"><i class="bi bi-arrow-left"></i><i class="bi bi-shop-window rounded-circle"></i> Amazon-Clone</span>
+        <span routerLink="/products/cart" (mouseleave)="show()" [ngClass]="isHovered ? 'show' : 'hide' "><i class="bi bi-arrow-left"></i>Back...</span>
+        <small>TEST MODE</small>
+      </div>
+
+      <div class="container">
+        <h1>Pay Amazon-clone</h1>
+        <h2>{{subtotal + Shipping}}</h2>
+        <div class="col-md-12 " *ngFor="let product of CartProducts">
+          <div class="row py-3">
+
+            <div class="col-md-2">
+              <img class="w-50 py-2 ms-md-3" [src]="product.image"/>
+            </div>
+
+            <div class="col-md-8">
+              <h6>{{product?.title}}</h6>
+              <p>{{product.description}}</p>
+            </div>
+            <div class="col-md-2 d-flex flex-column justify-content-between Quantity align-items-end">
+              <small>Qty: {{product?.Quantity}},<br>{{product?.price| currency}}</small>
+              <span>{{product?.total | currency}}</span>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="total">
+          <div class="d-flex  justify-content-between">
+            <span>Subtotal</span>
+            <span>{{subtotal |currency}}</span>
+          </div>
+          <hr>
+
+          <div class="d-flex justify-content-between">
+            <small>Shipping <br> Next-Day Shipping (1-2 business days)</small>
+            <small>{{Shipping}}</small>
+          </div>
+          <hr>
+
+          <div class="d-flex  justify-content-between">
+            <span>Total Due</span>
+            <span>{{TotalDue | currency}}</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-md-6 d-flex justify-content-center py-5">
+      <google-pay-button
+      environment="TEST"
+      buttonType="buy"
+      buttonColor="black"
+      [paymentRequest]="paymentRequest"
+      (loadpaymentdata)="onLoadPaymentData($event)"
+      [paymentAuthorizedCallback]="onPaymentDataAuthorized">
+    </google-pay-button>
+  </div>
+
+
+</div>
+</div>
+
+

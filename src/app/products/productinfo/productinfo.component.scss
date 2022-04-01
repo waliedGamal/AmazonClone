@@ -1,0 +1,68 @@
+@import "src/styles.scss";
+
+.product-info{
+  margin: 0 !important;
+  padding: 2rem;
+
+  .category{
+    font-size: 0.9rem;
+    line-height: 16px;
+    color: #6b7280;
+    font-weight: 400;
+  }
+  h1{
+    font-size: 2.8rem;
+    line-height: 48px;
+    color:$mainColor;
+    font-weight: 400;
+  }
+  p{
+    font-size: 1rem;
+    line-height: 24px;
+    color:#4b5563;
+    font-weight: 400;
+  }
+
+  span{
+    font-size: 1rem;
+    line-height: 24px;
+    color:#000000;
+    font-weight: 700;
+  };
+
+  small{
+    font-size: 1rem;
+    line-height: 24px;
+    color:#000000;
+    font-weight: 400;
+  }
+
+  h4{
+    color:$mainColor;
+    margin-top: 1rem;
+  }
+  button{
+    color: #000000;
+    background-color: $mainColor;
+    font-weight: 700;
+    margin-top: 1rem;
+  }
+  button:focus+.btn, .btn:focus {
+    outline: 2px solid transparent !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 0.1rem #f59e0b;
+  }
+}
+
+@media screen and (min-width: 290px) and (max-width: 765px){
+  .product-info{
+    h1{
+      font-size: 1.5rem !important;
+      line-height: 30px;
+    }
+
+    p{
+      font-size:12px !important;
+    }
+  }
+}

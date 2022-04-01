@@ -1,0 +1,51 @@
+<div class="container my-4">
+<div class="row justify-content-center">
+  <div class="col-md-4 my-2">
+
+    <div class="col-md-12 mx-auto w-50" routerLink="/home">
+      <img class="w-100 " src="../../assets/imgs/Amazon_logo.dark.svg.png">
+    </div>
+
+    <div class="my-3" *ngIf="isLoading" style="text-align: center;">
+      <app-loading-spinner></app-loading-spinner>
+    </div>
+
+    <div class="authform my-3 p-2" *ngIf="!isLoading">
+      <h2>{{isLoginMode ? 'Sign-In' : 'Create account'}}</h2>
+      <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm)">
+
+        <div class=" pb-3">
+          <label for="email">E-Mail</label>
+          <input class="form-control" id="email" type="email" formControlName="email"
+          [class.is-valid]="authForm.get('email')?.valid && authForm.get('email')?.touched"
+          [class.is-invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched">
+        </div>
+
+        <div class=" pb-1">
+          <label for="password">Password</label>
+          <input class="form-control" id="password" type="password" formControlName="password"
+          [class.is-valid]="authForm.get('password')?.valid && authForm.get('password')?.touched"
+          [class.is-invalid]="authForm.get('password')?.invalid && authForm.get('password')?.touched">
+          <small *ngIf="!isLoginMode"><i class="bi bi-info fs-5"></i>Passwords must be at least 6 characters.</small>
+        </div>
+
+        <div class="my-3">
+          <button class="btn p-1 col-12" [disabled]="!authForm.valid"  type="submit"> Continue</button>
+          <span class="text-danger fs-6" *ngIf="error">{{error}}</span>
+        </div>
+        <div class="footer-sign py-2">
+          <h6>{{isLoginMode ? 'By signing in':'By creating an account'}}, you agree to Amazon's <span>Conditions of Use</span> and <span>Privacy Notice.</span></h6>
+          <hr *ngIf="!isLoginMode" class="my-3">
+          <h6 *ngIf="!isLoginMode">Already have an account?<span (click)="onSwitchMode()"> Sign in<i class="bi bi-caret-right-fill"></i></span></h6>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+      <div class="col-md-4 mx-auto new" *ngIf="isLoginMode">
+        <h6 >New to Amazon?</h6>
+        <button class="btn p-1 col-12" (click)="onSwitchMode()">Create Your Amazon Account</button>
+      </div>
+
+</div>

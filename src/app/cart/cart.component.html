@@ -1,0 +1,70 @@
+
+  <main class="mt-5 py-5 ">
+    <div class="container-fluid row pt-4">
+
+      <div class="col-md-9 cart"  >
+
+        <div class="container-fluid">
+          <img class="w-100 " src="../../assets/slider/cart-ads.webp" alt="">
+        </div>
+
+        <!-- check if the cart is empty ! -->
+        <div class="py-4">
+          <h2 *ngIf="CartProducts.length" class="">Your Shopping Cart</h2>
+          <div *ngIf="!CartProducts.length">
+              <h5 class="">Your Cart is Empty...</h5>
+              <button routerLink="/products" class=" btn btn-primary"> Shop Now </button>
+          </div>
+          <hr>
+        </div>
+
+        <div  class="col-md-12 my-4 " *ngFor="let product of CartProducts ; index as i">
+          <div class="row d-flex single-product rounded align-items-center" >
+            <div class="col-md-2">
+              <img class="w-100 py-2  img-prod" [src]="product.image"/>
+            </div>
+
+            <div  class="col-md-10 ">
+              <div class="d-flex res justify-content-around align-items-center">
+
+                <div class="col-md-8 py-3">
+                  <h6 [routerLink]="['/products',product.id]" >{{product?.title}}</h6>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                    <i class="bi bi-star-fill"></i>
+                  <small>({{product?.rating?.rate}})</small>
+                  <p>{{product?.description}}</p>
+                  <small>{{product?.price | currency}} * {{product.Quantity}} = {{product.total | currency}} </small>
+                  <div class="prime">
+                    <img class="" src="../../assets/imgs/Prime-tag-.png" alt="">
+                    <span>FREE Next-day Delivery</span>
+                  </div>
+                </div>
+
+                <div class="col-md-2 quantity">
+                  <div class="row">
+                    <button (click)="toggleLess(product.id,v.value)"   class="btn rounded"><i class="bi bi-dash"></i></button>
+                    <input class="form-control col p-sm-1" [disabled]="true" #v type="text" min="1" [value]="product.Quantity">
+                    <button (click)="toggleMore(product.id,v.value)"  class="btn rounded" ><i class="bi bi-plus"></i></button>
+                    <button (click)="DeleteCart(i)" class="col-12 btn2 rounded">remove item</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-------------------------------------------------------------------------------------------------------------------------------->
+      </div>
+      <div class="col-md-3 border border-1 checkout" *ngIf="CartProducts.length">
+        <div class="">
+          <img class="w-100" src="../../assets/imgs/discountPNG.PNG" alt="">
+        </div>
+        <div class="pt-5 text-center">
+          <h5>Subtotal ({{CartProducts.length}} items):{{subtotal |currency}}</h5>
+          <button (click)="checkOut()"  [ngClass]="disableBtn ? 'btn-false' : 'btn-true' "  class="btn col-10" >{{disableBtn ? 'Sing in to checkout' : 'Proceed to checkout'}}</button>
+        </div>
+      </div>
+    </div>
+  </main>

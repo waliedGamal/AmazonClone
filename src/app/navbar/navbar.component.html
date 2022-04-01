@@ -1,0 +1,66 @@
+<header class="fixed-top">
+<nav class="navbar navbar-expand-sm navbar-dark p-1 text-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/home"> <img class="img-fluid logo" src="../../assets/imgs/Amazon_logo.svg.webp" alt=""> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <div class=" col-md-8 rounded position-relative" >
+        <div class="search" (mouseenter)="show()" (mouseleave)="hide()">
+          <input class="form-control position-relative" type="text" [(ngModel)]="name" placeholder="Search any thing You need..." >
+          <i class="bi bi-search rounded"></i>
+          <div class=" bg-white text-dark position-absolute searchpipe" >
+            <div class="row">
+              <div *ngFor="let product of Products | search:name:'title'">
+                <div *ngIf="name || hideSearch" [ngClass]="hideSearch ? 'hide' : 'show' " >
+                  <h6 (click)="navigateProduct(product.id)" class="py-1 my-1">{{product.title}} <small class="float-end">{{product.category}}</small></h6>
+                  <span class=" clear-fix"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class=" d-flex justify-content-around cart-container col-md-4">
+
+        <div class="header-links dropdown">
+          <div  data-bs-toggle="dropdown" id="dropdownMenuButton1" aria-expanded="false">
+            <p class="link1">Hello, <span *ngIf="isAuth">Sign In</span> {{userName}}</p>
+            <p class="link2 dropdown-toggle">Account & Lists</p>
+          </div>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li *ngIf="!isAuth"><a class="dropdown-item link1 text-center" (click)="logOut()" >Sign Out</a></li>
+            <li *ngIf="isAuth"><a class="dropdown-item link1 text-center" routerLink="/auth">Sign In</a></li>
+          </ul>
+        </div>
+
+        <div routerLink="products/cart" class="position-relative cart">
+          <i class="bi bi-cart3">
+            <span class=""> <small> {{cartCount.length}} </small>  </span>
+          </i>
+          <span>cart</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+    <div class="nav-2nd">
+      <ul class="d-flex justify-content-around">
+        <li > <i class="bi bi-justify text-white" >  </i> All </li>
+        <li >Prime Video</li>
+        <li >Amazon Business</li>
+        <li >Today's Deals</li>
+        <li class="d-none d-lg-block">Electronics & Computer</li>
+        <li class="d-none d-lg-block">Food & Grocery</li>
+        <li class="d-none d-lg-block">Prime</li>
+        <li class="d-none d-lg-block">Buy Again</li>
+        <li class="d-none d-lg-block">Shopper Toolkit</li>
+        <li class="d-none d-lg-block">Health & Personal Care</li>
+    </ul>
+    </div>
+</header>
+

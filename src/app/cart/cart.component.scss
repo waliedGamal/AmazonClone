@@ -1,0 +1,131 @@
+
+.quantity
+{
+  transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+
+  .btn{
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    background-color: #fbbf24;
+    font-weight: 700;
+    margin-top: 1rem;
+
+  }
+  .btn2{
+    height: fit-content;
+    font-size: 1rem;
+    background-color: #fbbf24;
+    font-weight: 400;
+    margin-top: 1rem;
+    border: 0px;
+    padding: 0.5rem;
+  }
+}
+input{
+  height: 5% !important;
+  margin-top:1.2rem;
+  text-align: center;
+  border: 0;
+  background-color: transparent !important;
+}
+
+main{
+  background-color: #F3F4F6 !important;
+}
+
+.img-prod{
+  padding: 0px;
+}
+
+.cart{
+  background-color: white;
+  h2{
+    font-size: 2rem;
+    font-weight: 400;
+    line-height:36px;
+  }
+  h4 small{
+    font-size:16px;
+    font-weight: 700;
+    line-height:24px;
+  }
+  h6{
+    cursor: pointer;
+    font-weight: 700;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+
+  .bi-star-fill{
+    color: FBC32E !important;
+  }
+
+  p span{
+    font-size:12px;
+    font-weight: 400;
+    line-height:16px;
+  }
+
+  .single-product{
+    border: 1px solid #fbbf24 !important;
+  }
+
+  .prime img{
+    width: 10%;
+  }
+}
+
+@media screen and (min-width: 290px) and (max-width: 765px){
+
+  p{
+    font-size: 12px;
+  }
+  .res{
+    flex-wrap: wrap !important;
+    flex-direction: column !important;
+  }
+  .quantity{
+    margin: 0.5rem 1rem !important;
+  }
+  .img-prod{
+    width: 75% !important;
+  }
+}
+.checkout{
+
+  .btn-true{
+    font-size: 1rem;
+    background-color: #fbbf24;
+    font-weight: 400;
+    margin-top: 1rem;
+    border: 0px;
+    padding: 0.5rem;
+  }
+  .btn-false{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-top: 1rem;
+    background-color: #888b8b !important;
+    border: 0px;
+    padding: 0.5rem;
+    cursor: no-drop !important;
+
+    &:focus+.btn-false, &:focus {
+      outline: 0 !important;
+      box-shadow: unset !important;
+  }
+  }
+}
+
+@media screen and (min-width: 765px){
+  p{
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,48 @@
+footer{
+  .top{
+    background-color: #485769;
+    color: white;
+    cursor: pointer;
+
+    h6{
+      font-size: 12px;
+      line-height: 24px;
+      font-weight: 400;
+
+    }
+    &:hover{
+      background-color: #65707e !important;
+    }
+  }
+  background-color: #232F3E;
+  h3{
+    font-size: 18px;
+    line-height: 28px;
+    font-weight: 700;
+    color: white;
+  }
+
+  ul li{
+
+      font-size: 16px;
+      line-height: 24px;
+      font-weight: 400;
+      color: #e5e7eb;
+      margin: 0.7rem 0;
+      cursor: pointer;
+      &:hover{
+        text-decoration: underline !important;
+      }
+  }
+
+  img{
+    width: 10% !important;
+    cursor: pointer;
+  }
+}
+
+@media screen and (min-width: 290px) and (max-width: 765px){
+  img{
+    width: 100% !important;
+  }
+}

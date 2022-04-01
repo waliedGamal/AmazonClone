@@ -1,0 +1,108 @@
+@import "src/styles.scss";
+
+
+.btn{
+  color: #000000;
+  background-color: $mainColor;
+  font-weight: 400;
+  font-size: 13px;
+  margin: 0.5rem 0;
+}
+.btn:focus+.btn, .btn:focus {
+  outline: 2px solid transparent !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 0.1rem #f59e0b;
+}
+img{
+  cursor: pointer;
+}
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 0.25rem #d88a03;
+}
+
+h2{
+  font-size: 28px !important;
+    line-height: 34px !important;
+    Color:#111111 !important;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.authform{
+  border: 1px #ddd solid;
+  label{
+    font-size: 13px !important;
+    line-height: 19px !important;
+    Color:#111111 !important;
+    font-weight: 700;
+  }
+  small{
+    font-size: 12px !important;
+    line-height: 15px !important;
+    Color:#2b2b2b !important;
+    font-weight: 400;
+  }
+}
+
+.footer-sign{
+  h6{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px !important;
+  }
+  h6 span{
+    color:#0066c0;
+    cursor: pointer;
+
+    &:hover{
+    color:#c45500;
+    text-decoration: underline;
+    }
+  }
+
+  .bi-caret-right-fill{
+    color: #0066c0 !important;
+    font-size: 10px !important;
+  }
+}
+.bi-info{
+  color: #0066c0 !important;
+}
+
+.new{
+  h6{
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 400;
+    color:#767676 ;
+    position: relative;
+    text-align: center;
+    &::after{
+      content: '';
+      height: 1px;
+      width: 35% !important;
+      position: absolute;
+      right: 0;
+      top: 50%;
+      background-color:#d1cfcf !important ;
+    }
+
+    &::before{
+      content: '';
+      height: 1px;
+      width: 35% !important;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      background-color:#d1cfcf !important ;
+    }
+  }
+
+  .btn{
+    background-color: #e7e9ec !important;
+    border: 1px solid #adb1b8;
+  }
+}

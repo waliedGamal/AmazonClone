@@ -7,39 +7,45 @@
       </ng-template>
       </swiper>
   </div>
-  <div class="container-fluid layer">
-    <div class="row postion-row">
-      <div class="col-md-6 col-lg-4 col-xl-3 p-4"
-          *ngFor="let product of LatestProducts">
-          <div class="product d-flex flex-column shadow">
 
-            <span class="product-cate"> {{product.category | uppercase}} </span>
+  <div class="my-3" *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
 
-            <div  class="product-img">
-              <img  [src]="product.image"/>
+
+    <div class="container-fluid layer"*ngIf="!isLoading">
+      <div class="row postion-row">
+        <div class="col-md-6 col-lg-4 col-xl-3 p-4"
+        *ngFor="let product of LatestProducts">
+        <div class="product d-flex flex-column shadow">
+
+          <span class="product-cate"> {{product.category | uppercase}} </span>
+
+          <div  class="product-img">
+            <img  [src]="product.image"/>
+          </div>
+
+          <div class="Product-content">
+            <h2 class="h6" [routerLink]="['/products',product.id]">{{product.title | shorting}}</h2>
+            <div>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <span>({{ product.rating.rate}})</span>
             </div>
-
-            <div class="Product-content">
-              <h2 class="h6" [routerLink]="['/products',product.id]">{{product.title | shorting}}</h2>
-              <div>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <span>({{ product.rating.rate}})</span>
-              </div>
-                <div>
-                  <p>{{product.description | shorting}}</p>
-                  <h5> {{product.price | currency}} </h5>
-                </div>
-                <div class="prime">
-                  <img class="w-25" src="../../assets/imgs/Prime-tag-.png" alt="">
-                  <span>FREE Next-day Delivery</span>
-                </div>
-                <div> <button (click)="AddToCart(product)" class="btn col-12"> Add To Cart </button> </div>
-              </div>
+            <div>
+              <p>{{product.description | shorting}}</p>
+              <h5> {{product.price | currency}} </h5>
+            </div>
+            <div class="prime">
+              <img class="w-25" src="../../assets/imgs/Prime-tag-.png" alt="">
+              <span>FREE Next-day Delivery</span>
+            </div>
+            <div> <button (click)="AddToCart(product)" class="btn col-12"> Add To Cart </button> </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
 </div>
@@ -48,15 +54,15 @@
   <img class="img-fluid" src="../../assets//imgs/discover.jpg" alt="">
 </div>
 
-<main class="container-fluid">
+<main class="container-fluid" *ngIf="!isLoading">
   <div class="row">
     <div class="col-md-6 col-lg-4 col-xl-3 p-4"
-        *ngFor="let product of Products">
-        <div class="product d-flex flex-column shadow">
+    *ngFor="let product of Products">
+    <div class="product d-flex flex-column shadow">
 
-          <span class="product-cate"> {{product.category | uppercase}} </span>
+      <span class="product-cate"> {{product.category | uppercase}} </span>
 
-          <div class="product-img">
+      <div class="product-img">
             <img  [src]="product.image"/>
           </div>
 
@@ -70,20 +76,18 @@
               <span>({{ product.rating.rate}})</span>
             </div>
 
-              <div>
-                <p>{{product.description | shorting}}</p>
-                <h5> {{product.price | currency}} </h5>
-              </div>
-
-              <div class="prime">
-                <img class="w-25" src="../../assets/imgs/Prime-tag-.png" alt="">
-                <span>FREE Next-day Delivery</span>
-              </div>
-              <div> <button (click)="AddToCart(product)" class="btn col-12"> Add To Cart </button> </div>
+            <div>
+              <p>{{product.description | shorting}}</p>
+              <h5> {{product.price | currency}} </h5>
             </div>
+
+            <div class="prime">
+              <img class="w-25" src="../../assets/imgs/Prime-tag-.png" alt="">
+              <span>FREE Next-day Delivery</span>
+            </div>
+            <div> <button (click)="AddToCart(product)" class="btn col-12"> Add To Cart </button> </div>
+          </div>
         </div>
       </div>
-  </div>
-</main>
-
-
+    </div>
+  </main>

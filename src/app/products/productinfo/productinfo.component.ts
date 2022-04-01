@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { Product } from '../../Shared/products';
 import { DataService } from '../../Shared/data.service';
 import { Component, OnInit ,DoCheck } from '@angular/core';
@@ -16,6 +16,9 @@ export class ProductinfoComponent implements OnInit,DoCheck {
   CartProducts:Product[]
   relatedProducts:Product[]
   ProductCategory =  new BehaviorSubject('');
+  allSub : Subscription
+  categorySub : Subscription
+  isLoading = false;
   ngOnInit(): void {
     this.productInfo()
     this.GetCategory()
@@ -26,9 +29,9 @@ export class ProductinfoComponent implements OnInit,DoCheck {
       this.CartProducts = JSON.parse(localStorage.getItem("cart") || '')
     }
   }
+
   //to get the single Product using id
   productInfo(){
-
     // * get the id with route.params.subscribe
     // this._ActivatedRoute.params.subscribe((Params:Params)=>{
     //   this.id = Params['id'] - 1
@@ -37,14 +40,17 @@ export class ProductinfoComponent implements OnInit,DoCheck {
     //     this.ProductCategory.next(this.Product.category)
     //   })
     // })
-
     // * getting the id with resolver service much better to make sure the component has id !!
-    this._ActivatedRoute.data.subscribe((data:Data)=>{
+    this.isLoading = true;
+    this.allSub = this._ActivatedRoute.data.subscribe((data:Data)=>{
       this.id = data['id'].id -2
       this.Product = data['id']
         this._DataService.GetProductDetails(this.id).subscribe((res)=>{
           this.Product = res
           this.ProductCategory.next(this.Product.category)
+          if(this.Product != null){
+            this.isLoading = false
+          }
         })
 
     })
@@ -58,10 +64,11 @@ export class ProductinfoComponent implements OnInit,DoCheck {
   // ! get category using firebase so i had to send the object , index and key to each category
   // *                      index / category / key of the object
   // * ex->" baseurl/category/${1}/${jewelery}/${MyWOBOCRmQhJAI2hEbb}
-
   GetCategory(){
       let index = 0;
       let key = '';
+      //behavior subject property to get the category name and sent it to the category api
+      this.isLoading = true
       this.ProductCategory.subscribe((category)=>{
         if(category == "electronics"){
           index = 0;
@@ -81,11 +88,15 @@ export class ProductinfoComponent implements OnInit,DoCheck {
         }
       })
     this.ProductCategory.subscribe(()=>{
-      this._DataService.GetCategory(index,this.ProductCategory.value,key).subscribe((res)=>{
+      this.categorySub = this._DataService.GetCategory(index,this.ProductCategory.value,key).subscribe((res)=>{
         this.relatedProducts = res
+        this.isLoading = false
       })
     })
   }
 
-
+  ngOnDestroy(): void {
+    this.allSub.unsubscribe()
+    this.categorySub.unsubscribe()
+}
 }

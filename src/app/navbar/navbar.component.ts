@@ -1,16 +1,18 @@
-import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Product } from '../Shared/products';
 import { DataService } from '../Shared/data.service';
-import { Component, OnInit,DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { AuthService } from '../auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit ,DoCheck {
+export class NavbarComponent implements OnInit ,DoCheck ,OnDestroy{
 
   constructor(public DataService:DataService, private route:Router , private auth:AuthService) { }
   cartCount:Product[]=[]
@@ -20,6 +22,7 @@ export class NavbarComponent implements OnInit ,DoCheck {
   searchKey:string
   hideSearch = false
   isAuth = false
+  allSub : Subscription
   searchForm = new FormGroup({ search : new FormControl('') })
 
   ngOnInit(): void {
@@ -45,9 +48,12 @@ export class NavbarComponent implements OnInit ,DoCheck {
   }
 
   getProducts(){
-    this.DataService.GetProducts().subscribe((res)=>{
+  this.allSub = this.DataService.GetProducts().subscribe((res)=>{
       this.Products = res
     })
+    if(this.name == ''){
+      this.allSub.unsubscribe()
+    }
   }
 
   remove(){
@@ -64,6 +70,9 @@ export class NavbarComponent implements OnInit ,DoCheck {
   navigateProduct(id:number){
     this.route.navigate(['/products',id])
     this.name = ''
+    if(this.name == ''){
+      this.allSub.unsubscribe()
+    }
   }
 
   hide(){
@@ -76,5 +85,12 @@ export class NavbarComponent implements OnInit ,DoCheck {
 
   logOut(){
     this.auth.logOut()
+  }
+
+  //unSubscribe the obs
+  ngOnDestroy(): void {
+    if(this.name == ''){
+      this.allSub.unsubscribe()
+    }
   }
 }

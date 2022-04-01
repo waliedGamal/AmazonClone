@@ -145,7 +145,7 @@ body{
   }
 }
 
-@media screen and (min-width: 290px) and (max-width: 765px){
+@media screen and (min-width: 290px) {
   .cart-container{
     flex-direction: column !important;
     .header-links{
@@ -169,7 +169,7 @@ body{
     top:0rem;
   }
   main{
-    padding-top: 120rem;
+    padding-top: 115rem;
   }
 
   .toast-right-top {
@@ -201,3 +201,14 @@ body{
   }
 }
 
+@media screen and (min-width: 370px) and (max-width:400px){
+  main{
+    padding-top: 130rem !important;
+  }
+}
+
+@media screen and (min-width: 425px){
+  main{
+    padding-top: 138rem !important;
+  }
+}

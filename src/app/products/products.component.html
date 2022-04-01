@@ -5,6 +5,10 @@
     </div>
   </div>
 
+  <div class="my-3" *ngIf="isLoading" style="text-align: center;">
+    <app-loading-spinner></app-loading-spinner>
+  </div>
+
   <div class="container-fluid ">
     <div class="row">
 
@@ -21,7 +25,7 @@
         </div>
       </div>
 
-      <div class="col-md-10">
+      <div class="col-md-10" *ngIf="!isLoading">
         <h3 class="py-3"> Products</h3>
         <div class="row">
             <div class="col-md-6 col-lg-4 col-xl-3 py-3"

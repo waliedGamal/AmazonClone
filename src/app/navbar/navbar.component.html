@@ -32,13 +32,13 @@
             <p class="link2 dropdown-toggle">Account & Lists</p>
           </div>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <li *ngIf="!isAuth"><a class="dropdown-item link1 text-center" (click)="logOut()" >Sign Out</a></li>
-            <li *ngIf="isAuth"><a class="dropdown-item link1 text-center" routerLink="/auth">Sign In</a></li>
+            <li *ngIf="!isAuth"><a class="dropdown-item link1 text-center"  (click)="logOut()" >Sign Out</a></li>
+            <li *ngIf="isAuth"><a class="dropdown-item link1 text-center"  routerLinkActive="active" routerLink="/auth">Sign In</a></li>
           </ul>
         </div>
 
-        <div routerLink="products/cart" class="position-relative cart">
-          <i class="bi bi-cart3">
+        <div  routerLinkActive="active" routerLink="products/cart" class="position-relative cart">
+          <i  class="bi bi-cart3">
             <span class=""> <small> {{cartCount.length}} </small>  </span>
           </i>
           <span>cart</span>

@@ -91,6 +91,7 @@ body{
       }
     }
 
+
     p{
       font-size: 0.8rem;
       line-height: 16px;
@@ -127,6 +128,9 @@ body{
     }
 }
 
+.bi-star-fill{
+  color: $mainColor;
+}
 .swiper-button-next , .swiper-button-prev{
   color: #fff;
 }
@@ -160,16 +164,13 @@ body{
     }
   }
 
-  .discover{
-    display: none !important;
+  .layer{
+    height: fit-content !important;
   }
 
   .postion-row{
     position:relative;
     top:0rem;
-  }
-  main{
-    padding-top: 120rem;
   }
 
   .toast-right-top {
@@ -186,9 +187,8 @@ body{
     border-bottom: transparent 0.1rem solid !important;
     }
   }
-
-  .discover{
-    display: none !important;
+  .layer{
+    height: fit-content !important;
   }
 
   .postion-row{
@@ -196,8 +196,5 @@ body{
     top:0rem;
   }
 
-  main{
-    padding-top: 55rem;
-  }
 }
 

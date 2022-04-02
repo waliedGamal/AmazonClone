@@ -15,7 +15,7 @@
 
     <div class="container-fluid layer"*ngIf="!isLoading">
       <div class="row postion-row">
-        <div class="col-md-6 col-lg-4 col-xl-3 p-4"
+        <div class="col-md-6 col-lg-3 p-4"
         *ngFor="let product of LatestProducts">
         <div class="product d-flex flex-column shadow">
 
@@ -29,9 +29,9 @@
             <h2 class="h6" [routerLink]="['/products',product.id]">{{product.title | shorting}}</h2>
             <div>
               <i class="bi bi-star-fill"></i>
+              <!-- <i class="bi bi-star-fill"></i>
               <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i> -->
               <span>({{ product.rating.rate}})</span>
             </div>
             <div>
@@ -50,7 +50,7 @@
   </div>
 </div>
 
-<div class="discover">
+<div class="discover col-12">
   <img class="img-fluid" src="../../assets//imgs/discover.jpg" alt="">
 </div>
 

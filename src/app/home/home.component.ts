@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit ,DoCheck , OnDestroy{
   };
 
   ngOnInit(): void {
-    Title:HomeComponent
     this.GetProducts()
     this.getLatestProducts()
   }

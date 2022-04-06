@@ -31,10 +31,10 @@
 
         <div class="my-3">
           <button class="btn p-1 col-12" [disabled]="!authForm.valid"  type="submit"> Continue</button>
-          <div class="google-or" *ngIf="isLoginMode">
+          <!-- <div class="google-or" *ngIf="isLoginMode">
             <h6 >OR</h6>
             <button class="btn google p-1 col-12 border" (click)="loginWithGoogle()"> <span class="google-per float-start "><i class="bi bi-google fs-6"></i></span> <span class="fs-6">Sign in with Google</span></button>
-          </div>
+          </div> -->
           <span class="text-danger fs-6" *ngIf="error">{{error}}</span>
         </div>
         <div class="footer-sign py-2">

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule ,Title } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,7 +19,6 @@ import { SharedModule } from '../app/Shared/shared.module';
     NavbarComponent,
     NotfoundComponent,
     FooterComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -30,6 +29,7 @@ import { SharedModule } from '../app/Shared/shared.module';
     FormsModule,
     SwiperModule,
     NgToastModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

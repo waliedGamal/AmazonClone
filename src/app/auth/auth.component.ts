@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -17,10 +17,14 @@ export class AuthComponent implements OnInit {
   isLoginMode = true;
   isLoading = false;
   error: string;
+  provider = new GoogleAuthProvider();
+  user:any
   constructor( private authService:AuthService , private route:Router) { }
 
   ngOnInit(): void {
+
   }
+
   // !one component authentication
   // !login mode to check if login mode true or false
   onSwitchMode(){
@@ -62,6 +66,22 @@ export class AuthComponent implements OnInit {
       }
       form.reset()
     }
+  }
+
+  loginWithGoogle(){
+    const auth = getAuth();
+signInWithPopup(auth, this.provider)
+  .then((result) => {
+    let token : any
+    token = result.user
+    this.user = token.accessToken;
+    localStorage.setItem('user',this.user)
+    this.authService.saveUserData()
+    // ...
+    setTimeout(() => {
+      this.route.navigate(['/home'])
+    }, 1500);
+  });
   }
 
 }

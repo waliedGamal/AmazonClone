@@ -11,6 +11,7 @@ import { SwiperModule } from "swiper/angular";
 import { NgToastModule } from 'ng-angular-popup';
 import { FooterComponent } from './footer/footer.component';
 import { SharedModule } from '../app/Shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,

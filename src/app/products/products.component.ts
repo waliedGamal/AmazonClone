@@ -38,7 +38,7 @@ export class ProductsComponent implements OnInit , OnDestroy  {
   AddToCart(product:Product){
     this.dataService.AddToCart(product,this.CartProducts)
   }
-  // get the value of category and store it to use it for filtering using pipe
+  // get the value of category and store it to use it for filtering pipe
   getSearchKey(type:any) {
     this.isLoading = true
     this.searchKey = type.target.attributes[1].nodeValue
@@ -46,6 +46,16 @@ export class ProductsComponent implements OnInit , OnDestroy  {
       this.isLoading = false
     }
   }
+
+  // formatLabel(value: number) {
+  //   if (value >= 1000) {
+  //     return Math.round(value / 1000) + 'k';
+  //   }
+  //   console.log(value);
+
+  //   return value;
+  // }
+
 
   //unSubscribe the obs
   ngOnDestroy(): void {

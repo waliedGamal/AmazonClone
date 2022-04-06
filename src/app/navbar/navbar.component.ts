@@ -32,7 +32,11 @@ export class NavbarComponent implements OnInit ,DoCheck ,OnDestroy{
       if(this.auth.userData.getValue() !=null){
         this.isAuth = false
         this.userName = this.auth.userData.getValue()
-        this.userName = this.userName.email
+        if(this.userName.name){
+          this.userName = this.userName.name
+        }else{
+          this.userName = this.userName.email
+        }
       }else{
         this.isAuth = true
       }

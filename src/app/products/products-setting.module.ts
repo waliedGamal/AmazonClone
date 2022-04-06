@@ -5,6 +5,7 @@ import { ProductsSettingRoutingModule } from './products-setting-routing.module'
 import { SharedModule } from '../Shared/shared.module';
 import { ProductinfoComponent } from './productinfo/productinfo.component';
 import { ProductsComponent } from './products.component';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ProductsComponent } from './products.component';
   imports: [
     CommonModule,
     ProductsSettingRoutingModule,
-    SharedModule
+    SharedModule,
+    MatSliderModule
   ]
 })
 export class ProductsSettingModule { }

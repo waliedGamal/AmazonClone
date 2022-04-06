@@ -46,8 +46,57 @@ h2{
     font-weight: 400;
   }
 }
+  .bi-google{
+    background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    padding: 15px;
+  }
+  .google{
+    background-color: white !important;
 
-.footer-sign{
+    &:hover {
+      background-color: #4285f4 !important;
+    }
+  }
+  .google-per{
+    background-color: white;
+  }
+
+  .google-or{
+    h6{
+      margin-top:10px ;
+      font-size: 15px;
+      line-height: 15px;
+      font-weight: 400;
+      color:#767676 ;
+      position: relative;
+      text-align: center;
+      &::after{
+        content: '';
+        height: 1px;
+        width: 40% !important;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        background-color:#d1cfcf !important ;
+      }
+
+      &::before{
+        content: '';
+        height: 1px;
+        width: 40% !important;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        background-color:#d1cfcf !important ;
+      }
+    }
+  }
+
+  .footer-sign{
   h6{
     font-size: 14px;
     font-weight: 400;
@@ -106,3 +155,4 @@ h2{
     border: 1px solid #adb1b8;
   }
 }
+

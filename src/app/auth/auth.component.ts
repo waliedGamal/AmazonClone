@@ -68,20 +68,20 @@ export class AuthComponent implements OnInit {
     }
   }
 
-//   loginWithGoogle(){
-//     const auth = getAuth();
-// signInWithPopup(auth, this.provider)
-//   .then((result) => {
-//     let token : any
-//     token = result.user
-//     this.user = token.accessToken;
-//     localStorage.setItem('user',this.user)
-//     this.authService.saveUserData()
-//     // ...
-//     setTimeout(() => {
-//       this.route.navigate(['/home'])
-//     }, 1500);
-//   });
-//   }
+  loginWithGoogle(){
+    const auth = getAuth();
+signInWithPopup(auth, this.provider)
+  .then((result) => {
+    let token : any
+    token = result.user
+    this.user = token.accessToken;
+    localStorage.setItem('user',this.user)
+    this.authService.saveUserData()
+    // ...
+    setTimeout(() => {
+      this.route.navigate(['/home'])
+    }, 1500);
+  });
+  }
 
 }

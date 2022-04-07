@@ -2,7 +2,8 @@ import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { auth } from 'src/main';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
@@ -69,7 +70,6 @@ export class AuthComponent implements OnInit {
   }
 
   loginWithGoogle(){
-    const auth = getAuth();
 signInWithPopup(auth, this.provider)
   .then((result) => {
     let token : any

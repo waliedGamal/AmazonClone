@@ -1,8 +1,9 @@
+
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
 import { auth } from 'src/main';
 @Component({
   selector: 'app-auth',
@@ -23,7 +24,6 @@ export class AuthComponent implements OnInit {
   constructor( private authService:AuthService , private route:Router) { }
 
   ngOnInit(): void {
-
   }
 
   // !one component authentication

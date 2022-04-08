@@ -1,6 +1,6 @@
 import { DataService } from '../../Shared/data.service';
 import { Router } from '@angular/router';
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { NgToastService } from 'ng-angular-popup';
 import { AuthService } from '../auth.service';
 
@@ -9,57 +9,24 @@ import { AuthService } from '../auth.service';
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss']
 })
-export class PaymentComponent implements OnInit ,DoCheck {
+export class PaymentComponent implements OnInit {
   CartProducts:any[];
   isHovered = false;
   subtotal=0
   TotalDue=0
+  amount:string
   Shipping=6.99
 
-  paymentRequest:google.payments.api.PaymentDataRequest = {
-    apiVersion: 2,
-    apiVersionMinor: 0,
-    allowedPaymentMethods: [
-      {
-        type: 'CARD',
-        parameters: {
-          allowedAuthMethods: ['PAN_ONLY', 'CRYPTOGRAM_3DS'],
-          allowedCardNetworks: ['AMEX', 'VISA', 'MASTERCARD']
-        },
-        tokenizationSpecification: {
-          type: 'PAYMENT_GATEWAY',
-          parameters: {
-            gateway: 'example',
-            gatewayMerchantId: 'exampleGatewayMerchantId'
-          }
-        }
-      }
-    ],
-    merchantInfo: {
-      merchantId: '12345678901234567890',
-      merchantName: 'Demo Merchant'
-    },
-    transactionInfo: {
-      totalPriceStatus: 'FINAL',
-      totalPriceLabel: 'Total',
-      totalPrice: `100`,
-      currencyCode: 'USD',
-      countryCode: 'US'
-    },
-    callbackIntents:['PAYMENT_AUTHORIZATION']
-  }
-
-  constructor(private auth:AuthService, private tost:NgToastService, private route : Router, private dataService:DataService) { }
+  constructor(private tost:NgToastService, private route : Router) { }
 
   ngOnInit(): void {
     if(localStorage.getItem("cart") != null){
       this.CartProducts = JSON.parse(localStorage.getItem("cart") || '')
       this.remove()
     }
-  }
-  ngDoCheck(): void {
     this.getgrandtotal()
   }
+
   onPaymentDataAuthorized:google.payments.api.PaymentAuthorizedHandler =(PaymentData) =>{
       return {
         transactionState:'SUCCESS'
@@ -86,8 +53,8 @@ export class PaymentComponent implements OnInit ,DoCheck {
         this.subtotal = 0
       }
     }
+    this.amount = ''+this.TotalDue
   }
-
   remove(){
     let set = new Set()
     this.CartProducts = this.CartProducts.reduce((value,index)=>{
@@ -106,6 +73,4 @@ export class PaymentComponent implements OnInit ,DoCheck {
   show(){
     this.isHovered = false
   }
-
-
 }

@@ -16,7 +16,7 @@
 
         <div class=" pb-3">
           <label for="email">E-Mail</label>
-          <input class="form-control" id="email" type="email" formControlName="email"
+          <input class="form-control" id="email" autocomplete="email" type="email" formControlName="email"
           [class.is-valid]="authForm.get('email')?.valid && authForm.get('email')?.touched"
           [class.is-invalid]="authForm.get('email')?.invalid && authForm.get('email')?.touched">
         </div>

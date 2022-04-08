@@ -1,16 +1,16 @@
-
+import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, User } from "firebase/auth";
 import { auth } from 'src/main';
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss']
 })
-export class AuthComponent implements OnInit {
+export class AuthComponent implements OnInit{
 
   authForm = new FormGroup({
     email : new FormControl(null,[Validators.required,Validators.email]),
@@ -18,9 +18,9 @@ export class AuthComponent implements OnInit {
   })
   isLoginMode = true;
   isLoading = false;
-  error: string;
+  error= new BehaviorSubject('')
   provider = new GoogleAuthProvider();
-  user:any
+  user:string
   constructor( private authService:AuthService , private route:Router) { }
 
   ngOnInit(): void {
@@ -30,6 +30,7 @@ export class AuthComponent implements OnInit {
   // !login mode to check if login mode true or false
   onSwitchMode(){
     this.isLoginMode = !this.isLoginMode;
+    this.error.next('')
   }
   onSubmit(form: FormGroup){
     let email = form.value.email;
@@ -49,19 +50,19 @@ export class AuthComponent implements OnInit {
               }, 1500);
             }
           },errorRes =>{
-            this.error = errorRes.error.error.message
+            this.error.next(errorRes.error.error.message)
             this.isLoading = false
           })
         }      }
     }else{ //? login mode false
       // *... show signup
-    this.isLoading = true
+      this.isLoading = true
       if(form.valid){
         this.authService.SignUp(email,password).subscribe(()=>{
           this.isLoading = false
           this.isLoginMode = true
         },errorRes =>{
-          this.error = errorRes.error.error.message
+          this.error.next(errorRes.error.error.message)
           this.isLoading = false
         })
       }

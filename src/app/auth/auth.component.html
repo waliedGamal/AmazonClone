@@ -35,7 +35,9 @@
             <h6 >OR</h6>
             <button class="btn google p-1 col-12 border" (click)="loginWithGoogle()"> <span class="google-per float-start "><i class="bi bi-google fs-6"></i></span> <span class="fs-6">Sign in with Google</span></button>
           </div>
-          <span class="text-danger fs-6" *ngIf="error">{{error}}</span>
+          <!-- <span class="text-danger fs-6" *ngIf="isLoginMode">{{isLoginMode ? signInError : ''}}</span>
+          <span class="text-danger fs-6" *ngIf="!isLoginMode">{{!isLoginMode ? signUpError : ''}}</span> -->
+          <span class="text-danger fs-6" *ngIf="error">{{error | async}}</span>
         </div>
         <div class="footer-sign py-2">
           <h6>{{isLoginMode ? 'By signing in':'By creating an account'}}, you agree to Amazon's <span>Conditions of Use</span> and <span>Privacy Notice.</span></h6>

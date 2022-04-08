@@ -18,7 +18,7 @@ export class AuthService {
   }
 
   FirebaseKey='AIzaSyDOuPuLJckbvsCGuHLIyXldSMhkT9AzDH8'
-  userData = new BehaviorSubject(null)
+  userData = new BehaviorSubject<string | null>(null)
 
   saveUserData(){
     let encodedUserData = JSON.stringify( localStorage.getItem('user'));

@@ -23,7 +23,7 @@
 
         <div class=" pb-1">
           <label for="password">Password</label>
-          <input class="form-control" id="password" type="password" formControlName="password"
+          <input class="form-control" id="password" autocomplete="current-password" type="password" formControlName="password"
           [class.is-valid]="authForm.get('password')?.valid && authForm.get('password')?.touched"
           [class.is-invalid]="authForm.get('password')?.invalid && authForm.get('password')?.touched">
           <small *ngIf="!isLoginMode"><i class="bi bi-info fs-5"></i>Passwords must be at least 6 characters.</small>

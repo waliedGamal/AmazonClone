@@ -11,7 +11,7 @@
 
       <div class="container">
         <h1>Pay Amazon-clone</h1>
-        <h2>{{subtotal + Shipping}}</h2>
+        <h2>{{TotalDue | currency}}</h2>
         <div class="col-md-12 " *ngFor="let product of CartProducts">
           <div class="row py-3">
 

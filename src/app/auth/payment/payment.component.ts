@@ -49,11 +49,13 @@ export class PaymentComponent implements OnInit {
       sum +=this.CartProducts[i].total
       this.subtotal = sum
       this.TotalDue = this.subtotal + this.Shipping
+      this.TotalDue = Math.round(this.TotalDue)
       if(this.CartProducts.length == 0){
         this.subtotal = 0
       }
     }
-    this.amount = ''+this.TotalDue
+
+    this.amount = ''+ Math.round(this.TotalDue)
   }
   remove(){
     let set = new Set()

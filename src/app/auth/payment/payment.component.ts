@@ -1,3 +1,4 @@
+import { auth } from './../../../main';
 import { DataService } from '../../Shared/data.service';
 import { Router } from '@angular/router';
 import { Component, OnInit} from '@angular/core';
@@ -44,6 +45,7 @@ export class PaymentComponent implements OnInit {
       }, 2000);
     }
   }
+
   getgrandtotal(){
     let sum = 0
     for(let i=0 ;i < this.CartProducts.length; i++){

@@ -1,5 +1,6 @@
+import { NgToastService } from 'ng-angular-popup';
 import { BehaviorSubject } from 'rxjs';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -21,7 +22,7 @@ export class AuthComponent implements OnInit{
   error= new BehaviorSubject('')
   provider = new GoogleAuthProvider();
   user:string
-  constructor( private authService:AuthService , private route:Router) { }
+  constructor( private authService:AuthService , private route:Router, private toast:NgToastService) { }
 
   ngOnInit(): void {
   }
@@ -82,6 +83,11 @@ signInWithPopup(auth, this.provider)
     setTimeout(() => {
       this.route.navigate(['/home'])
     }, 1500);
+  },(error)=>{
+    if(error.code == "auth/popup-closed-by-user"){
+      this.isLoading = false
+      this.toast.error({detail:'error',summary:'Please Complete Your Sign In',duration:1500})
+    }
   });
   }
 

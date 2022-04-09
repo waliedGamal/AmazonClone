@@ -44,7 +44,7 @@
 
                 <div class="col-md-2 quantity">
                   <div class="row">
-                    <button (click)="toggleLess(product.id,v.value)"   class="btn rounded"><i class="bi bi-dash"></i></button>
+                    <button (click)="toggleLess(product.id,v.value)"  [ngClass]="product.Quantity == 1 ? 'btn-disabled' : 'btn-enabled'" class="btn rounded"><i class="bi bi-dash"></i></button>
                     <input class="form-control col p-sm-1" [disabled]="true" #v type="text" min="1" [value]="product.Quantity">
                     <button (click)="toggleMore(product.id,v.value)"  class="btn rounded" ><i class="bi bi-plus"></i></button>
                     <button (click)="DeleteCart(i)" class="col-12 btn2 rounded">remove item</button>

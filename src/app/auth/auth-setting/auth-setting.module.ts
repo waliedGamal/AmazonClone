@@ -7,11 +7,13 @@ import { GooglePayButtonModule } from '@google-pay/button-angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from 'src/app/Shared/shared.module';
+import { SuccessComponent } from '../success/success.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     PaymentComponent,
+    SuccessComponent
   ],
   imports: [
     CommonModule,

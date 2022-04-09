@@ -17,7 +17,7 @@ export class PaymentComponent implements OnInit {
   amount:string
   Shipping=6.99
 
-  constructor(private tost:NgToastService, private route : Router) { }
+  constructor(private tost:NgToastService, private route : Router,private auth:AuthService) { }
 
   ngOnInit(): void {
     if(localStorage.getItem("cart") != null){
@@ -36,11 +36,12 @@ export class PaymentComponent implements OnInit {
   onLoadPaymentData(event:Event){
     const eventDetail = event as CustomEvent<google.payments.api.PaymentData>;
     if(eventDetail.detail.paymentMethodData.tokenizationData.token !=null){
-      this.tost.success({detail:"successfully checked out with",summary:eventDetail.detail.paymentMethodData.description,duration:2500})
+      this.tost.success({detail:"successfully checked out with",summary:eventDetail.detail.paymentMethodData.description,duration:2000})
       localStorage.setItem("cart","[]")
+      this.auth.success.next(true)
       setTimeout(() => {
-        this.route.navigate(['/products'])
-      }, 2600);
+        this.route.navigate(['/auth/success'])
+      }, 2000);
     }
   }
   getgrandtotal(){

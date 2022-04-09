@@ -82,6 +82,20 @@ main{
   }
 }
 
+.btn-disabled{
+  border: 0px;
+    padding: 0.5rem;
+    cursor: no-drop !important;
+    &:focus+.btn-false, &:focus {
+      outline: 0 !important;
+      box-shadow: unset !important;
+  }
+}
+
+.btn-enabled{
+  cursor: pointer !important ;
+}
+
 @media screen and (min-width: 290px) and (max-width: 765px){
 
   p{

@@ -46,17 +46,6 @@ export class ProductsComponent implements OnInit , OnDestroy  {
       this.isLoading = false
     }
   }
-
-  // formatLabel(value: number) {
-  //   if (value >= 1000) {
-  //     return Math.round(value / 1000) + 'k';
-  //   }
-  //   console.log(value);
-
-  //   return value;
-  // }
-
-
   //unSubscribe the obs
   ngOnDestroy(): void {
       this.allSub.unsubscribe()

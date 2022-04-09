@@ -19,7 +19,7 @@ export class AuthService {
 
   FirebaseKey='AIzaSyDOuPuLJckbvsCGuHLIyXldSMhkT9AzDH8'
   userData = new BehaviorSubject<string | null>(null)
-
+  success = new BehaviorSubject(false)
   saveUserData(){
     let encodedUserData = JSON.stringify( localStorage.getItem('user'));
     this.userData.next(jwtDecode(encodedUserData))

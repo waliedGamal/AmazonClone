@@ -8,12 +8,12 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   constructor() { }
-  windowScrolled = false;
+  // windowScrolled = false;
   ngOnInit(): void {
 
-    window.addEventListener('scroll', () => {
-      this.windowScrolled = window.pageYOffset !== 0;
-    });
+    // window.addEventListener('scroll', () => {
+    //   this.windowScrolled = window.pageYOffset !== 0;
+    // });
 
   }
   scrollToTop(){

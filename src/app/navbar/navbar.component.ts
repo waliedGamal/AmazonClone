@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit ,DoCheck ,OnDestroy{
   hideSearch = false
   isAuth = false
   allSub : Subscription
+  path='gs://clone-5bf01.appspot.com/imgs/Amazon_logo.dark.svg.png'
   searchForm = new FormGroup({ search : new FormControl('') })
 
   ngOnInit(): void {

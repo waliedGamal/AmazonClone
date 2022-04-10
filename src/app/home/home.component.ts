@@ -1,7 +1,6 @@
-import { Title } from '@angular/platform-browser';
+import { DataService } from './../Shared/data.service';
 import { Product } from '../Shared/products';
 import { Router } from '@angular/router';
-import { DataService } from '../Shared/data.service';
 import { Component, OnInit, DoCheck, OnDestroy } from '@angular/core';
 import SwiperCore , { SwiperOptions ,Navigation ,Autoplay } from 'swiper';
 import { Subscription } from 'rxjs';
@@ -37,6 +36,7 @@ export class HomeComponent implements OnInit ,DoCheck , OnDestroy{
   ngOnInit(): void {
     this.GetProducts()
     this.getLatestProducts()
+    this.getslider()
   }
   ngDoCheck(): void {
     if(localStorage.getItem("cart") != null){
@@ -67,6 +67,10 @@ export class HomeComponent implements OnInit ,DoCheck , OnDestroy{
   // add to cart using service & localStorage (singleProduct , products [])
   AddToCart(product:any){
     this._DataService.AddToCart(product,this.Cart)
+  }
+
+  getslider(){
+    
   }
 
   //unSubscribe the obs

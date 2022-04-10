@@ -19,7 +19,17 @@ export const firebaseConfig = {
   measurementId: "G-19WEZ5NV27"
 };
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+function bootstrap() {
+  platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+};
+
+
+if (document.readyState === 'complete') {
+  bootstrap();
+} else {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+}
+
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);

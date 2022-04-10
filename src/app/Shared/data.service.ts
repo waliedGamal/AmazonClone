@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { NgToastService } from 'ng-angular-popup';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -29,6 +30,8 @@ export class DataService {
   saveCart(product:Product[]){
     localStorage.setItem("cart",JSON.stringify(product))
   }
+
+
   // add to cart using service & localStorage (singleProduct , products [])
   AddToCart(product:Product,CartProduct:Product[]){
     product.Quantity = 1
@@ -55,3 +58,7 @@ export class DataService {
   }
 
 }
+function overviewRef(overviewRef: any) {
+  throw new Error('Function not implemented.');
+}
+
